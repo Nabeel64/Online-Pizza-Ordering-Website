@@ -1,0 +1,34 @@
+{% extends 'html/base.html' %}
+{% load static %}
+{% block title %}Billing{% endblock %}
+{% block content %}
+<div class="container">
+	<h1 align="center">Order Details</h1>
+	<h3>Ordered Items</h3>
+	<table class="table table-borderless" style="align:center;">
+		<tr class="bg-dark text-light">
+			<th>S.No</th>
+			<th>Pizza Name</th>
+			<th>Pizza Size</th>
+			<th>Pizza Cost</th>
+		</tr>
+		{% for i in o %}
+		<tr>
+			<td>{{forloop.counter}}</td>
+			<td>{{i.pname}}</td>
+			<td>{{i.psize}}</td>
+			<td>{{i.pcost}}</td>
+		</tr>
+		{% endfor %}
+	</table>
+	<h3>Total Cost Inclusive of all Taxes : {{c}}</h3>
+	<h3>Address Details</h3>
+	<form method="POST">
+		{% csrf_token %}
+		<input type="text" name="name" value="{{request.user.username}}" class="form-control my-2" placeholder="Enter Name">
+		<input type="text" name="mnumb" class="form-control my-2" placeholder="Enter Mobile Number">
+		<input type="text" name="address" class="form-control my-2" placeholder="Enter Your Address">
+		<input type="submit" value="Place Order" class="btn btn-outline-success" name="">		
+	</form>
+</div>
+{% endblock %}

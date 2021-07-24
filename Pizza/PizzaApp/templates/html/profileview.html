@@ -1,0 +1,43 @@
+{% extends 'html/base.html' %}
+{% load static %}
+{% block title %} Profile {% endblock %} 
+{% block content %}
+<div class="container">
+  <div class="row mt-4">
+    <div class="card col-md-4 shadow-lg">
+      <div class="card-body">
+        <h3>Profile Page</h3>
+        <img src="{{user.userpic.url}}" width="100%">
+      </div>
+    </div>
+    <div class="card col-md shadow-lg mx-2">
+      <div class="card-body">
+        <h3>User Details</h3>
+        <table class="table table-borderless">
+          <tr>
+            <th>First Name</th>
+            <td>{{user.first_name}}</td>
+            <th>Last Name</th>
+            <td>{{user.last_name}}</td>
+          </tr>
+          <tr>
+            <th>Email</th>
+            <td>{{user.email}}</td>
+          </tr>         
+        </table>
+        <form method="POST">
+        {% csrf_token %}
+          <div class="row">
+            <div class="col">
+              <a href="{% url 'hm' %}" class="btn btn-outline-secondary my-2 form-control">Back</a>
+            </div>
+            <div class="col">
+              <a href="{% url 'profupdt' %}" class="btn btn-outline-success my-2 form-control">Update</a>
+            </div>
+          </div>
+        </form>
+      </div>
+  </div>
+</div>
+
+{% endblock %}

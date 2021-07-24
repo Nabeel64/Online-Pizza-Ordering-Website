@@ -1,0 +1,33 @@
+{% extends 'html/base.html' %}
+{% load static %}
+{% block title %}Orders{% endblock %}
+{% block content %}
+<div class="container">
+	<h1 align="center">Customer Orders</h1>
+	{% if c == 0 %}
+	<h3 align="center">No Orders</h3>
+	{% else %}
+	<table class="table table-borderless">
+		<tr class="bg-dark text-light">
+			<th>S.No</th>
+			<th>Name</th>
+			<th>Mobile Number</th>
+			<th>Pizzas</th>
+			<th>Address</th>
+			<th>Total Cost</th>
+		</tr>
+		{% for i in s %}
+		<tr>
+			<td>{{forloop.counter}}</td>
+			<td>{{i.uname}}</td>
+			<td>{{i.mnumb}}</td>
+			<td>{{i.pizzas}}</td>
+			<td>{{i.address}}</td>
+			<td>{{i.tcost}}</td>
+			<td><a href="{% url 'orderdel' i.id %}" class="btn btn-outline-danger">Proccessed</a></td>
+		</tr>
+		{% endfor %}
+	</table>
+	{% endif %}
+</div>
+{% endblock %}

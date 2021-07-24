@@ -1,0 +1,30 @@
+{% extends 'html/base.html' %}
+{% load static %}
+{% block title %}Order History{% endblock %}
+{% block content %}
+<div class="container">
+	<h1 align="center">Order History</h1>
+	{% if c == 0 %}
+	<h3 align="center">You Haven't made any orders!</h3>
+	{% else %}
+	<table class="table table-borderless">
+		<tr class="bg-dark text-light">
+			<th>S.No</th>
+			<th>Ordered Pizzas</th>
+			<th>Total Cost</th>
+			<th>Address</th>
+			<th>Date of Order</th>
+		</tr>
+		{% for i in s %}
+		<tr>
+			<td>{{forloop.counter}}</td>
+			<td>{{i.pizzas}}</td>
+			<td>{{i.tcost}}</td>
+			<td>{{i.address}}</td>
+			<td>{{i.time}}</td>
+		</tr>
+		{% endfor %}		
+	</table>
+	{% endif %}
+</div>
+{% endblock %}

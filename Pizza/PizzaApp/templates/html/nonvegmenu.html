@@ -1,0 +1,29 @@
+{% extends 'html/base.html' %}
+{% block title %}Non Veg Menu{% endblock %}
+{% block content %}
+<div class="container">
+   <h1 align="center">Non Veg Menu</h1>
+     <div class="row" style="margin-left: 100px;">
+     {% for i in q %}
+     <form method="POST">
+      {% csrf_token %}
+        <div class="col-sm-3">
+         <div class="card m-2 mx-6 my-6" style="height: fit-content; width: fit-content;">
+            <img src="{{i.pimage.url}}" alt="" class="img-card image" height="250" width="250" >
+            <p>{{i.pname}}</p>
+            <input type="hidden" value="{{i.pname}}" name="pizzaname">
+            <select name="size">
+               <option value="Regular {{i.pregular}}">Regular {{i.pregular}}</option>
+               <option value="Medium {{i.pmedium}}">Medium {{i.pmedium}}</option>
+               <option value="Large {{i.plarge}}">Large {{i.plarge}}</option>
+            </select>
+            {% if not user.is_superuser and user.is_authenticated  %}
+            <input type="submit" class="btn btn-outline-success mt-3" value="ADD to CART" name="">
+            {% endif %}
+        </div>
+      </div>
+      </form>
+     {% endfor %}
+      </div>
+</div>
+{% endblock %}

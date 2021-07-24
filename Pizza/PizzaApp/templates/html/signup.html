@@ -1,0 +1,29 @@
+{% extends 'html/base.html' %}
+{% load static %}
+{% block title %} signup {% endblock %} 
+{% block content %}
+<br> <br> <br>
+<div class="container mt-4">
+    <div class="card col-md-5 mx-auto">
+        <div class="card-body">
+            <h1>Sign Up</h1>
+            <form method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                {% for i in d %}
+                <div>
+                    {{i}}
+                </div>
+                {% endfor %}
+                <div class="row">
+                <div class="col">
+                    <input type="reset" value="Reset" class="btn btn-outline-danger my-2">
+                </div>
+                <div class="col">
+                    <input type="submit" value="Signup" class="btn btn-outline-success my-2" >
+                </div>
+            </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}
