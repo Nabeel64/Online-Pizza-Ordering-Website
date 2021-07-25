@@ -26,8 +26,8 @@
 	<form method="POST">
 		{% csrf_token %}
 		<input type="text" name="name" value="{{request.user.username}}" class="form-control my-2" placeholder="Enter Name">
-		<input type="text" name="mnumb" class="form-control my-2" placeholder="Enter Mobile Number">
-		<input type="text" name="address" class="form-control my-2" placeholder="Enter Your Address">
+		<input type="text" name="mnumb" class="form-control my-2" placeholder="Enter Mobile Number" required >
+		<input type="text" name="address" class="form-control my-2" placeholder="Enter Your Address" required>
 		<input type="submit" value="Place Order" class="btn btn-outline-success" name="">		
 	</form>
 </div>
